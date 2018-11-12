@@ -5,12 +5,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link style="stylesheet" href="/style.css">
 </head>
 <body>
+<div class = "container">
+<h1>
 Please fill the form to register!
+</h1>
 
-
-<form action ="Summery">
+<form action ="/Summery" method=post>
 <p>
 Name <br/></br>
 <fieldset>
@@ -43,4 +47,5 @@ Name <br/></br>
   </p>
  </form>
 </body>
+</div>
 </html>

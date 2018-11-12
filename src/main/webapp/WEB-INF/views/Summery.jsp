@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello  ${firstname}
+
+Hello  ${Customer.firstname} ${Customer.lastname}
+What would you like to order from the menu?<br>
+Enter your choice!!
+
+
+<a class="menu" href="/menu" method=post >Menu</a>
 </body>
 </html>

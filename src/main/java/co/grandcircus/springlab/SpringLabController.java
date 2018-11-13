@@ -3,14 +3,19 @@ package co.grandcircus.springlab;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+
 @Controller
 public class SpringLabController {
+	@Autowired
+	private MenuItemDao menuitemdao;
 	
 	
 		@RequestMapping("/")
@@ -57,7 +62,13 @@ public class SpringLabController {
 		@RequestMapping("/menu")
 		public ModelAndView showMenuItems() {
 			
-			List<MenuItems> items= new  ArrayList<MenuItems>();
+				List<MenuItems> leListOfItems = menuitemdao.findAll();
+				ModelAndView mv= new ModelAndView("menu");
+				mv.addObject("items",leListOfItems);
+				
+				return mv;
+			
+			/*List<MenuItems> items= new  ArrayList<MenuItems>();
 			
 			items.add(new MenuItems("Blonde Roast Coffee","Lightly roasted coffee that's soft, mellow and flavorful", 2.99));
 			items.add(new MenuItems("Caffe Mistro","A one to one mix of fresh brewed coffee and steamed milk add up to one distinctly delicious coffee drink",3.99));
@@ -65,7 +76,7 @@ public class SpringLabController {
 			ModelAndView mv = new ModelAndView("menu");
 			mv.addObject("items",items);
 			//System.out.println(items.get(1).getName());
-			return mv;
+			return mv;*/
 			
 	  
 		

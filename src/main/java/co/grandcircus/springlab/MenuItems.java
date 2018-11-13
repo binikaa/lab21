@@ -1,14 +1,22 @@
 package co.grandcircus.springlab;
 
 public class MenuItems {
+	private Long id;
 	private String name;
-	private double price;
+	private Double price;
 	private String description;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public MenuItems()
 	{
 		
 	}
-	public MenuItems(String name,String description,double price)
+	public MenuItems(String name,String description,Double price)
 	{
 	     super();
 		this.name=name;
@@ -28,10 +36,10 @@ public class MenuItems {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	@Override

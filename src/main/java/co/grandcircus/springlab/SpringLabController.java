@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SpringLabController {
 	@Autowired
-	private MenuItemDao menuitemdao;
+   MenuItemDao menuitemdao;
 	
 	
 		@RequestMapping("/")
@@ -62,28 +64,38 @@ public class SpringLabController {
 		@RequestMapping("/menu")
 		public ModelAndView showMenuItems() {
 			
-				List<MenuItems> leListOfItems = menuitemdao.findAll();
+				//List<MenuItems> leListOfItems = menuitemdao.findAll();
 				ModelAndView mv= new ModelAndView("menu");
-				mv.addObject("items",leListOfItems);
+				mv.addObject("items",menuitemdao.findAll());
 				
 				return mv;
-			
-			/*List<MenuItems> items= new  ArrayList<MenuItems>();
-			
-			items.add(new MenuItems("Blonde Roast Coffee","Lightly roasted coffee that's soft, mellow and flavorful", 2.99));
-			items.add(new MenuItems("Caffe Mistro","A one to one mix of fresh brewed coffee and steamed milk add up to one distinctly delicious coffee drink",3.99));
-			items.add(new MenuItems("Decafe Pike Place Roast","Our signature medium roast coffee with a smooth,balanced and rich flavor,minus the caffeine",3.49));
-			ModelAndView mv = new ModelAndView("menu");
-			mv.addObject("items",items);
-			//System.out.println(items.get(1).getName());
-			return mv;*/
-			
-	  
+		
 		
 		}
-		
-	
-		
+		@RequestMapping("/item/create")
+		public ModelAndView showCreateForm() {
+			ModelAndView mav = new ModelAndView("add");
+			mav.addObject("title","Add a Item");
+			return mav;
 		}
 		
+		
+		@RequestMapping(value="/add_item", method=RequestMethod.GET)
+		public ModelAndView submitCreateForm(MenuItems menu_item) {
+			menuitemdao.create(menu_item);
+			return new ModelAndView("redirect:/menu");
+		}
+		@RequestMapping("/item/edit")
+		public ModelAndView showeditForm() {
+			ModelAndView mav = new ModelAndView("edit");
+			return mav;
+		}
+		@RequestMapping(value="/edit_item", method=RequestMethod.GET)
+	public ModelAndView submitEditForm(MenuItems menu_item) {
+			menuitemdao.update(menu_item);
+			return new ModelAndView("redirect:/menu");
+		}
+		
+		}
+
 	    

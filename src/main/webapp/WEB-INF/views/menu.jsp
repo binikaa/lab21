@@ -27,7 +27,8 @@
        <!--   <tr>${items[0].name}</tr>   <tr>${items[0].description}</tr> <tr>${items[0].price }</tr> <br><br>
            <tr>${items[1].name }</tr>   <tr>${items[1].description}</tr> <tr>${items[1].price }</tr><br>
             <tr>${items[2].name }</tr>   <tr>${items[2].description}</tr> <tr>${items[2].price }</tr>-->
-          
+          <a class="menu" href="/item/create"  >Add a new Item</a>
+          <a class="menu" href="/item/edit">Edit an item</a>
 			</tbody>
 </table> 
 </body>
